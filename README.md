@@ -74,6 +74,8 @@ This project use the following ports :
 
 ## Configure Nginx With SSL Certificates [`Optional`]
 
+- [Generate Certificate](https://hub.docker.com/r/jacoelho/generate-certificate/)
+
 You can change the host name by editing the `.env` file.
 
 If you modify the host name, do not forget to add it to the `/etc/hosts` file.
@@ -86,20 +88,18 @@ If you modify the host name, do not forget to add it to the `/etc/hosts` file.
 
 2. Configure Nginx
 
-- [Generate Certificate](https://hub.docker.com/r/jacoelho/generate-certificate/)
+Do not modify the `etc/nginx/default.conf` file, it is overwritten by `etc/nginx/default.template.conf`
 
-  Do not modify the `etc/nginx/default.conf` file, it is overwritten by `etc/nginx/default.template.conf`
+Edit nginx file `etc/nginx/default.template.conf` and uncomment the SSL server section :
 
-  Edit nginx file `etc/nginx/default.template.conf` and uncomment the SSL server section :
-
-  ```sh
-  # server {
-  #     server_name ${NGINX_HOST};
-  #
-  #     listen 443 ssl;
-  #     fastcgi_param HTTPS on;
-  #     ...
-  # }
-  ```
+```sh
+# server {
+#     server_name ${NGINX_HOST};
+#
+#     listen 443 ssl;
+#     fastcgi_param HTTPS on;
+#     ...
+# }
+```
 
 ---
